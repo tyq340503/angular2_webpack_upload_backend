@@ -1,14 +1,14 @@
 import { Component, ViewEncapsulation, OnInit, OnDestroy, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import 'rxjs/Rx';
-import { User } from 'src/app/models/user';
-import { RegisterService } from 'src/app/service/register.service';
+import { User } from '../../models/user';
+import { RegisterService } from '../../service/register.service';
 
 @Component({
-    selector: 'app-login',
-    templateUrl: './login.component.html',
+    selector: 'app-register',
+    templateUrl: './register.component.html',
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class RegisterComponent implements OnInit, OnDestroy {
     newUser: User = new User();
     register: boolean = false;
 
@@ -26,11 +26,11 @@ export class LoginComponent implements OnInit, OnDestroy {
             data=>{
                 this.register = true;
                 this.newUser = new User();
+                this.router.navigate(['/home']);
             },error=>{
                 console.log(error);
             }
         )
-        this.router.navigate(['/home']);
     }
 
     ngOnDestroy() {

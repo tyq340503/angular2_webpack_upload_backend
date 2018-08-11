@@ -3,8 +3,6 @@ import { User } from '../models/user';
 import { Photo } from '../models/photo'
 import { Headers, Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { promise } from 'selenium-webdriver';
-import { reject } from 'q';
 import { resolve } from 'path';
 
 @Injectable()

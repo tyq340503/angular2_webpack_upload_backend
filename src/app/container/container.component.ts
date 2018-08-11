@@ -1,8 +1,10 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { RegisterService } from '../service/register.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
+  providers: [RegisterService],
   template: ' <router-outlet></router-outlet>',
   styleUrls: [
     '../../../node_modules/bootstrap/dist/css/bootstrap.min.css',
@@ -15,6 +17,6 @@ import { Router } from '@angular/router';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
-  constructor(){
+  constructor() {
   }
 }

@@ -8,6 +8,8 @@ import { RouterModule, Router } from '@angular/router';
 import { AppRoutes } from './container.routes';
 import { AppComponent } from './container.component';
 import { LoginComponent } from '../modules/login/login.component';
+import { RegisterComponent } from '../modules/register/register.component';
+// import { RegisterService } from 'src/app/service/register.service';
 
 @NgModule({
   imports: [
@@ -18,9 +20,9 @@ import { LoginComponent } from '../modules/login/login.component';
   ],
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
