@@ -16,4 +16,10 @@ export class User {
         return this.photoList;
     }
 
+    public setValue(object:Object){
+        this.userName = object['username'];
+        this.password = object['password'];
+        this.email = object['email'];
+    }
+
 }

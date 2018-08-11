@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
     constructor(private router: Router, private registerService: RegisterService) {
         this.form = new FormGroup({
-            
+
             username: new FormControl('', CustomValidators.range([6, 20])),
             password: new FormControl('', CustomValidators.number),
             repassword: new FormControl('', CustomValidators.number),
@@ -39,8 +39,15 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
     // 登录事件
     onSubmit(e) {
+        // console.log(e);
+        // let sendParams = {
+        //     'username': this.form.get('username'),
+        //     'password': this.form.get('password'),
+        //     'email': this.form.get('email')
+        // };
+        this.newUser.setValue(e.form._value);
         console.log(this.newUser);
-        console.log(e);
+
         this.registerService.sendUser(this.newUser).subscribe(
             data => {
                 this.checkErrArr = [];
