@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
+import {CustomFormsModule} from "ng2-validation";
 import { HttpModule } from '@angular/http';
 
 import { RouterModule, Router } from '@angular/router';
@@ -15,6 +16,8 @@ import { RegisterComponent } from '../modules/register/register.component';
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
+    CustomFormsModule,
     HttpModule,
     RouterModule.forRoot(AppRoutes, {useHash: true})
   ],

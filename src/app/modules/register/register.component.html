@@ -5,29 +5,38 @@
     <div class="login_wrapper">
         <div class="animate form login_form">
             <section class="login_content">
-                <form (ngSubmit)="onSubmit()">
+                <form (ngSubmit)="onSubmit(myForm)" #myForm="ngForm">
                     <h1>注册管理系统</h1>
                     <div *ngIf="checkErrArr.length" style="color: red;">
-                            <p><strong>{{checkErrArr[0]}}</strong></p>
+                        <p>
+                            <strong>{{checkErrArr[0]}}</strong>
+                        </p>
                         <!-- <div *ngFor="let errArr of checkErrArr">
                             <p><strong>{{errArr.name}}</strong></p>
                             <p *ngFor="let err of errArr.checkErr">{{err}}</p>
                         </div> -->
                     </div>
                     <div>
-                        <input type="text" class="form-control" placeholder="用户名" [(ngModel)]="newUser.userName" name="username" required autofocus />
+                        <input type="text" class="form-control" placeholder="username" [(ngModel)]="form.username" #username="ngModel" [rangeLength]="[6, 20]"
+                            name="username" required autofocus />
+                        <p class="text-danger" *ngIf="username.errors?.rangeLength">username should be more than 5 words</p>
                     </div>
                     <div>
-                        <input type="text" class="form-control" placeholder="用户名" [(ngModel)]="newUser.email" name="username" required autofocus />
+                        <input type="text" class="form-control" placeholder="email" [(ngModel)]="form.email" #email="ngModel" name="email" (blur)="onBlur($event)"
+                            required autofocus />
+                        <p class="text-danger" *ngIf="email.errors?.email">
+                            email format is not correct
+                        </p>
                     </div>
                     <div>
-                        <input type="password" class="form-control" placeholder="密码" [(ngModel)]="newUser.password" name="password" required />
+                        <input type="password" class="form-control" placeholder="password" [(ngModel)]="form.password" name="password" required />
                     </div>
                     <div>
-                        <input type="password" class="form-control" placeholder="密码" [(ngModel)]="repassword" name="password" required />
+                        <input type="password" class="form-control" placeholder="password again" [(ngModel)]="form.repassword" name="password" required
+                        />
                     </div>
                     <div>
-                        <button class="btn btn-default submit" type="submit">登录</button>
+                        <button class="btn btn-default submit" [disabled]="!myForm.form.valid" type="submit">登录</button>
                     </div>
 
                     <div class="clearfix"></div>
