@@ -10,6 +10,8 @@ import { RegisterService } from '../../service/register.service';
 })
 export class RegisterComponent implements OnInit, OnDestroy {
     newUser: User = new User();
+    repassword:string = "";
+    checkErrArr: any = [];
     register: boolean = false;
 
     constructor(private router: Router, private registerService:RegisterService) {
@@ -24,11 +26,13 @@ export class RegisterComponent implements OnInit, OnDestroy {
         console.log(this.newUser);
         this.registerService.sendUser(this.newUser).subscribe(
             data=>{
+                this.checkErrArr = [];
                 this.register = true;
                 this.newUser = new User();
                 this.router.navigate(['/home']);
             },error=>{
                 console.log(error);
+                this.checkErrArr.push(error);
             }
         )
     }
